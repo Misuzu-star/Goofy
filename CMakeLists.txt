@@ -1,0 +1,32 @@
+PROJECT(GOOFY)
+
+# 设置和兼容 cmake 版本
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+CMAKE_POLICY(VERSION 3.0)
+
+# 设置 CXX_FLAGS 相关参数
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -fprofile-arcs -ftest-coverage")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wformat=2")
+
+# 设置目标输出路径
+SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out)
+SET(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/out)
+
+# 设置源文件目录
+SET(SRC     ${CMAKE_SOURCE_DIR}/src)
+
+# 设置依赖库目录
+SET(DEPS_DIRECTORY ${CMAKE_SOURCE_DIR}/deps)
+
+# 设置各个依赖库路径
+SET(GTEST   ${DEPS_DIRECTORY}/gtest)
+SET(GMOCK   ${DEPS_DIRECTORY}/gmock)
+SET(LEVELDB ${DEPS_DIRECTORY}/leveldb)
+SET(SPDLOG  ${DEPS_DIRECTORY}/spdlog)
+SET(UUID    ${DEPS_DIRECTORY}/uuid)
+SET(URING   ${DEPS_DIRECTORY}/liburing)
+SET(EC      ${DEPS_DIRECTORY}/erasurecode)
+
+# 编译子项
+ADD_SUBDIRECTORY("src")
+ADD_SUBDIRECTORY("test")
